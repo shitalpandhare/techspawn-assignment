@@ -1,0 +1,203 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+          <button
+            class="btn btn-primary newdelete"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            New
+          </button>
+          <button
+            class="btn btn-primary newdelete"
+            (click)="onDelete()"
+            [disabled]="!isSelectProduct"
+          >
+            Delete
+          </button>
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Add Product Details</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    #closebutton
+                  >
+                    &times;
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div>
+                      <label for="product_name">Product Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="product_name"
+                        name="productName"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_cost">Product Cost</label>
+                      <input
+                        class="form-control"
+                        type="number"
+                        id="product_cost"
+                        name="productCost"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_sale_price">Product Sale Price</label>
+                      <input
+                        class="form-control"
+                        type="number"
+                        id="product_sale_price"
+                        name="productSalePrice"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_retail_price"
+                        >Product Retail Price</label
+                      >
+                      <input
+                        class="form-control"
+                        type="number"
+                        id="product_retail_price"
+                        name="productRetailsPrice"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_current_inventory"
+                        >Product Inventory</label
+                      >
+                      <input
+                        class="form-control"
+                        type="number"
+                        id="product_current_inventory"
+                        name="productInventory"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_manufacturing"
+                        >Product Manufacturing</label
+                      >
+                      <input
+                        class="form-control"
+                        type="number"
+                        id="product_manufacturing"
+                        name="productManufacturing"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_backordered">Backorderd</label>
+                      <input
+                        style="margin-left: 10px"
+                        type="checkbox"
+                        id="product_backordered"
+                        name="productBackordered"
+                        ngModel
+                      />
+                    </div>
+                    <div>
+                      <label for="product_primary_image"
+                        >Product Primary Image</label
+                      >
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="product_primary_image"
+                        name="productPrimaryImage"
+                        (change)="onProductPrimaryImage($event)"
+                        ngModel
+                      />
+                    </div>
+
+                    <div>
+                      <label for="product_catalog_image"
+                        >Product Catalog Images</label
+                      >
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="product_catalog_image"
+                        name="productCatalogImage"
+                        ngModel
+                        multiple
+                        (change)="onProductCatalogImage($event)"
+                      />
+                    </div>
+
+                    <div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                        id="closeModal"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link cursor"
+                ><fa-icon [icon]="fileexport" (click)="exportAsXLSX()"></fa-icon
+              ></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link cursor"><fa-icon [icon]="filter"></fa-icon></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link cursor"
+                ><fa-icon [icon]="columns"></fa-icon
+              ></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <div>
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                name="search"
+                [(ngModel)]="searchProduct"
+                (ngModelChange)="searchProducts()"
+              />
+            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

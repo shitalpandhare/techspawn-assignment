@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h4>{{ productDetails.productName }}</h4>
+      <img
+        src="{{ productDetails.productPrimaryImage }}"
+        class="img-fluid img-responsive"
+        alt="product primary image"
+        style="width: 300px; height: 250px"
+      />
+    </div>
+    <div class="col-md-7">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              routerLinkActive="active"
+              [routerLink]="['catalog']"
+              >Catalog Images</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active"
+              [routerLink]="['sales']"
+              >Sales and Opportunities</a
+            >
+          </li>
+        </ul>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

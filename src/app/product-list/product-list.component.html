@@ -1,0 +1,42 @@
+<div class="container">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th class="aligncenter" scope="col">Product Name</th>
+        <th class="aligncenter" scope="col">Cost</th>
+        <th class="aligncenter" scope="col">Sale Price</th>
+        <th class="aligncenter" scope="col">Retail Price</th>
+        <th class="aligncenter" scope="col">Inventory</th>
+        <th class="aligncenter" scope="col">Manufacturing</th>
+        <th class="aligncenter" scope="col">Backorderd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let product of productDetails
+            | search: searchText
+            | paginate: { itemsPerPage: 4, currentPage: p };
+          let i = index
+        "
+        routerLinkActive="active"
+        [routerLink]="['product', product.productId]"
+        class="cursor"
+      >
+        <td class="aligncenter">{{ product.productName }}</td>
+        <td class="aligncenter">{{ product.productCost }}</td>
+        <td class="aligncenter">{{ product.productSalePrice }}</td>
+        <td class="aligncenter">{{ product.productRetailsPrice }}</td>
+        <td class="aligncenter">{{ product.productInventory }}</td>
+        <td class="aligncenter">{{ product.productManufacturing }}</td>
+        <td class="aligncenter">
+          <input type="checkbox" [checked]="product.productBackordered" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.newdelete {
+  margin-right: 10px;
+}
+
+.navbar-nav > li {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.cursor {
+  cursor: pointer;
+}

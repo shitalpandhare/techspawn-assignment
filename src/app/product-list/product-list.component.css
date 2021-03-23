@@ -1,0 +1,15 @@
+.aligncenter {
+  text-align: center;
+}
+.active {
+  background-color: darkcyan;
+}
+.cursor {
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-right: 0;
+}

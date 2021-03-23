@@ -1,0 +1,16 @@
+<div *ngIf="productDetails.productSalesAndOpps != null">
+  <div style="display: block">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="mbarChartLabels"
+      [options]="barChartOptions"
+      [colors]="barChartColors"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+    ></canvas>
+  </div>
+</div>
+<div *ngIf="productDetails.productSalesAndOpps == null">
+  <p>Sales and Opportunity stat is not available for this product</p>
+</div>
