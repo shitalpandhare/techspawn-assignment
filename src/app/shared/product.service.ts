@@ -120,14 +120,6 @@ export class ProductService implements OnInit {
       }
     });
     return pro;
-    // this.productDetails.map((i, j) => {
-    //   if (i.productId == id)
-    //   {
-    //     return i;
-    //   }
-    //   return;
-    // })
-    // return;
   }
 
   //for storing actual product id
@@ -142,46 +134,5 @@ export class ProductService implements OnInit {
 
   setAllProducts(productDetails: ProductDetails[]) {
     this.productDetails = productDetails;
-  }
-
-  //image decoding in base64
-
-  onProductEncImage(evt, count: number) {
-    let files = evt.target.files;
-    console.log(files);
-    console.log(files[0]);
-    let file: string;
-    if (count == 1) {
-      file = files[0];
-      this.prodEncOneImage(files, file);
-      console.log('in ser if');
-    } else {
-      for (let i = 0; i < count; i++) {
-        file = '';
-        file = files[i];
-        console.log('ii' + i);
-
-        this.prodEncOneImage(files, file);
-      }
-    }
-    // console.log(this.productEndodedImages)
-    // return this.productEndodedImages;
-  }
-
-  prodEncOneImage(files, file) {
-    console.log('in ser fun');
-    if (files && file) {
-      var reader = new FileReader();
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-    }
-  }
-  _handleReaderLoaded(readerEvt) {
-    var binaryString = readerEvt.target.result;
-    this.productEndodedImages.push(
-      (this.prefixEncodeStr += btoa(binaryString))
-    );
-    // console.log('Binary String  : '+btoa(binaryString))
-    this.arr.push((this.prefixEncodeStr += btoa(binaryString)));
   }
 }

@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   public productCatalogImage: String[] = [];
   public productCatImg: String[] = [];
   public productSalesAndOpps: String[] = [];
-  myFiles: string[] = [];
 
   public productDetails: ProductDetails[] = [];
 
@@ -59,8 +58,9 @@ export class HeaderComponent implements OnInit {
 
   onSubmit() {
     console.log('sub' + this.productService.getPid());
-    this.productId = this.productService.productDetails.length + 1;
-
+    let index = this.productService.productDetails.length - 1;
+    console.log(index);
+    this.productId = this.productService.productDetails[index].productId + 1;
     let obj: ProductDetails = {
       productId: this.productId,
       productName: this.form.value.productName,
@@ -87,7 +87,7 @@ export class HeaderComponent implements OnInit {
     this.productService.deleteProduct(this.id);
     this.productService.isSelectProduct.next(false);
     this.route.navigate(['../']);
-    this.searchProduct = '';
+    // this.searchProduct = '';
   }
 
   //for conversion image to base64
